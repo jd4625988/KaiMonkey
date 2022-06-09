@@ -6,7 +6,7 @@
       "Properties": {
         "RepositoryName": "test-repository",
         "ImageScanningConfiguration": {
-          "ScanOnPush": false
+          "ScanOnPush": true
         },
         "RepositoryPolicyText": {
           "Version": "2008-10-17",
@@ -31,7 +31,11 @@
               ]
             }
           ]
-        }
+        },
+        "EncryptionConfiguration": {
+          "EncryptionType": "KMS"
+        },
+        "ImageTagMutability": "IMMUTABLE"
       }
     }
   }

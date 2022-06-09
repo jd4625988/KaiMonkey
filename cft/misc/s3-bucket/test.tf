@@ -5,9 +5,32 @@ resource "aws_s3_bucket" "mybucket" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
+        sse_algorithm = "aws:kms"
       }
     }
   }
+}
+
+
+resource "aws_s3_bucket_versioning" "mybucket" {
+  bucket = aws_s3_bucket.mybucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+
+resource "aws_s3_bucket" "mybucket_log_bucket" {
+  bucket = "mybucket-log-bucket"
+}
+
+resource "aws_s3_bucket_logging" "mybucket" {
+  bucket = aws_s3_bucket.mybucket.id
+
+  target_bucket = aws_s3_bucket.mybucket_log_bucket.id
+  target_prefix = "log/"
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
@@ -15,6 +38,8 @@ resource "aws_s3_bucket_public_access_block" "example" {
 
   block_public_acls   = true
   block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_policy" "b" {

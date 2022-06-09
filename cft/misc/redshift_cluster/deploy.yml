@@ -16,6 +16,7 @@ Resources:
       Tags:
         - Key: foo
           Value: bar
+      PubliclyAccessible: False
   NoKmsId:
     Type: "AWS::Redshift::Cluster"
     Properties:
@@ -48,6 +49,7 @@ Resources:
       Tags:
         - Key: foo
           Value: bar
+      Encrypted: True
   NoLogging:
     Type: "AWS::Redshift::Cluster"
     Properties:

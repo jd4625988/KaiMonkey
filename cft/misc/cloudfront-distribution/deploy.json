@@ -98,7 +98,7 @@
                     },
                     "ViewerCertificate": {
                         "CloudFrontDefaultCertificate": false,
-                        "MinimumProtocolVersion": "TLSv1.0"
+                        "MinimumProtocolVersion": "TLSv1.2_2021"
                     },
                     "WebACLId": ""
                 },

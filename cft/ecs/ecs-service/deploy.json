@@ -169,7 +169,10 @@
           {
             "Ref": "Subnet1"
           }
-        ]
+        ],
+        "AccessLoggingPolicy": {
+          "Enabled": true
+        }
       }
     },
     "VPC": {

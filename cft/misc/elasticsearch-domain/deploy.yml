@@ -11,7 +11,7 @@ Resources:
         DedicatedMasterType: "m3.medium.elasticsearch"
         DedicatedMasterCount: 3
       EncryptionAtRestOptions:
-        Enabled: false
+        Enabled: true
       EBSOptions:
         EBSEnabled: true
         Iops: 0
@@ -36,3 +36,9 @@ Resources:
           CloudWatchLogsLogGroupArn: >-
             arn:aws:logs:us-east-1:123456789012:log-group:/aws/aes/domains/es-slow-logs
           Enabled: true
+        AUDIT_LOGS:
+          Enabled: True
+      NodeToNodeEncryptionOptions:
+        Enabled: True
+      DomainEndpointOptions:
+        EnforceHTTPS: True

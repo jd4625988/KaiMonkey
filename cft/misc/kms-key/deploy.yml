@@ -4,7 +4,7 @@ Resources:
     Type: AWS::KMS::Key
     Properties:
       Description: An example symmetric CMK
-      EnableKeyRotation: false
+      EnableKeyRotation: true
       PendingWindowInDays: 100
       Enabled: true
       KeyPolicy:

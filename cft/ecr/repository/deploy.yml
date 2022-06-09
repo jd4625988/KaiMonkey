@@ -4,4 +4,7 @@ Resources:
     Type: AWS::ECR::Repository
     Properties:
       ImageScanningConfiguration:
-        ScanOnPush: false
+        ScanOnPush: true
+      ImageTagMutability: IMMUTABLE
+      EncryptionConfiguration:
+        EncryptionType: KMS

@@ -5,7 +5,7 @@
       "Type": "AWS::EC2::Volume",
       "Properties": {
         "Size": 100,
-        "Encrypted": false,
+        "Encrypted": true
         "KmsKeyId":"KmsKeyId",
         "AvailabilityZone": {
           "Fn::GetAtt": [

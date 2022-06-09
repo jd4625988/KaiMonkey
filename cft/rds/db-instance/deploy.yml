@@ -61,10 +61,9 @@ Resources:
       AllocatedStorage: !Ref DBAllocatedStorage
       Engine: MySQL
       KmsKeyId: ""
-      StorageEncrypted: false
+      StorageEncrypted: true
       AutoMinorVersionUpgrade: false
       EnableIAMDatabaseAuthentication: false
-      PubliclyAccessible: true
       EnableCloudwatchLogsExports:
       # - audit
       # - error 
@@ -77,3 +76,4 @@ Resources:
       MasterUserPassword: !Ref DBPassword
       MonitoringInterval: 60
       MonitoringRoleArn: 'arn:aws:iam::123456789012:role/rds-monitoring-role'
+      MultiAZ: True

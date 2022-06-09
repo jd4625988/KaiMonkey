@@ -8,7 +8,7 @@
           "EnableCloudwatchLogsExports" : [],
           "KmsKeyId" : "String",
           "Port" : 10000,
-          "StorageEncrypted" : false
+          "StorageEncrypted" : true
         }
     }
   }

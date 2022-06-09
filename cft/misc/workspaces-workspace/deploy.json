@@ -6,7 +6,7 @@
       "Properties" : {
           "BundleId" : "String",
           "DirectoryId" : "String",
-          "RootVolumeEncryptionEnabled" : false,
+          "RootVolumeEncryptionEnabled" : true
           "UserName" : "String",
           "UserVolumeEncryptionEnabled" : false,
           "VolumeEncryptionKey" : "String"

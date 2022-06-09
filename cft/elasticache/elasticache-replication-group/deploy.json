@@ -15,7 +15,7 @@
         "ReplicasPerNodeGroup": 3,
         "Port": 6379,
         "AtRestEncryptionEnabled": true,
-        "TransitEncryptionEnabled": false,
+        "TransitEncryptionEnabled": true
 	"PreferredMaintenanceWindow": "sun:05:00-sun:09:00",
         "ReplicationGroupDescription": "A sample replication group",
         "SecurityGroupIds": [

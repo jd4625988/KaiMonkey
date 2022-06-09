@@ -10,7 +10,7 @@ Resources:
       KmsKeyId: somekms
       MultiAZ: false
       PreferredMaintenanceWindow: "sun:10:30-sun:14:30"
-      PubliclyAccessible: true
+      PubliclyAccessible: false
       ReplicationInstanceClass: dms.t2.micro
       ReplicationInstanceIdentifier: test-dms-id
       ReplicationSubnetGroupIdentifier: subnet-id

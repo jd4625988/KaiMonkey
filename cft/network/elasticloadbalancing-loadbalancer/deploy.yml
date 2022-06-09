@@ -27,3 +27,5 @@ Resources:
           Value: ELBSecurityPolicy-TLS-1-2-2017-01
         - Name: Policy-2
           Value: ELBS-2
+      AccessLoggingPolicy:
+        Enabled: True
