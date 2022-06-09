@@ -61,6 +61,9 @@ resource "aws_db_instance" "km_db" {
   tags = merge(var.default_tags, {
     Name = "km_db_${var.environment}"
   })
+  iam_database_authentication_enabled = true
+  multi_az = true
+  monitoring_interval = true
 }
 
 resource "aws_ssm_parameter" "km_ssm_db_host" {
@@ -109,8 +112,96 @@ resource "aws_s3_bucket" "km_blob_storage" {
   })
 }
 
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "km_blob_storage" {
+  bucket = aws_s3_bucket.km_blob_storage.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
+
+
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "km_blob_storage" {
+  bucket = aws_s3_bucket.km_blob_storage.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "AES256"
+    }
+  }
+}
+
+
+resource "aws_s3_bucket_versioning" "km_blob_storage" {
+  bucket = aws_s3_bucket.km_blob_storage.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+resource "aws_s3_bucket" "km_blob_storage_log_bucket" {
+  bucket = "km_blob_storage-log-bucket"
+}
+
+resource "aws_s3_bucket_logging" "km_blob_storage" {
+  bucket = aws_s3_bucket.km_blob_storage.id
+
+  target_bucket = aws_s3_bucket.km_blob_storage_log_bucket.id
+  target_prefix = "log/"
+}
+
 resource "aws_s3_bucket" "km_public_blob" {
   bucket = "km-public-blob"
+}
+
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "km_public_blob" {
+  bucket = aws_s3_bucket.km_public_blob.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
+
+
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "km_public_blob" {
+  bucket = aws_s3_bucket.km_public_blob.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "AES256"
+    }
+  }
+}
+
+
+resource "aws_s3_bucket_versioning" "km_public_blob" {
+  bucket = aws_s3_bucket.km_public_blob.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+resource "aws_s3_bucket" "km_public_blob_log_bucket" {
+  bucket = "km_public_blob-log-bucket"
+}
+
+resource "aws_s3_bucket_logging" "km_public_blob" {
+  bucket = aws_s3_bucket.km_public_blob.id
+
+  target_bucket = aws_s3_bucket.km_public_blob_log_bucket.id
+  target_prefix = "log/"
 }
 
 resource "aws_s3_bucket_public_access_block" "km_public_blob" {
@@ -118,4 +209,8 @@ resource "aws_s3_bucket_public_access_block" "km_public_blob" {
 
   block_public_acls   = false
   block_public_policy = false
+  block_public_acls = true
+  restrict_public_buckets = true
+  ignore_public_acls = true
+  block_public_policy = true
 }

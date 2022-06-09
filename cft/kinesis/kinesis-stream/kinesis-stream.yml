@@ -5,3 +5,5 @@ Resources:
             Name: MyKinesisStream
             RetentionPeriodHours: 168
             ShardCount: 3
+          StreamEncryption:
+            EncryptionType: KMS

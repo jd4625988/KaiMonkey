@@ -12,6 +12,8 @@ Resources:
       BackupRetentionPeriod: 7
       EnableCloudwatchLogsExports:
         - postgresql
+      EnableIAMDatabaseAuthentication: True
+      StorageEncrypted: True
   BackupRetention:
     Type: 'AWS::RDS::DBCluster'
     Properties:
@@ -24,3 +26,4 @@ Resources:
       DBClusterParameterGroupName: default.aurora-postgresql10
       EnableCloudwatchLogsExports:
         - postgresql
+      EnableIAMDatabaseAuthentication: True

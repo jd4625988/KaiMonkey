@@ -7,7 +7,7 @@ Resources:
       EngineType: ActiveMQ
       EngineVersion: "5.15.0"
       HostInstanceType: mq.t2.micro
-      PubliclyAccessible: true
+      PubliclyAccessible: false
       Users:
         -
           ConsoleAccess: true
@@ -37,3 +37,4 @@ Resources:
             Ref: AmazonMqPassword
           Username:
             Ref: AmazonMqUsername
+      PubliclyAccessible: False

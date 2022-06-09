@@ -9,12 +9,17 @@ Resources:
         IndexDocument: index.html
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
       BucketEncryption:
         ServerSideEncryptionConfiguration:
           - BucketKeyEnabled: true
             ServerSideEncryptionByDefault:
               KMSMasterKeyID: test
-              SSEAlgorithm: AES
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
   SampleBucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
     Properties:

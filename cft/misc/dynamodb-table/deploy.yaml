@@ -64,4 +64,6 @@ Resources:
               - "Artist"
               - "NumberOfSongs"
             ProjectionType: "INCLUDE"
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: True
          

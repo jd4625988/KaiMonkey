@@ -5,7 +5,7 @@ Resources:
     Type: AWS::DAX::Cluster
     Properties:
       SSESpecification:
-        SSEEnabled: false
+        SSEEnabled: true
       ClusterName: "MyDAXCluster"
       NodeType: "dax.r3.large"
       ReplicationFactor: 1

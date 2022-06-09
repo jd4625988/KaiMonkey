@@ -46,7 +46,8 @@
             "DataTraceEnabled": false,
             "ThrottlingBurstLimit": 555
           }
-        ]
+        ],
+        "TracingEnabled": true
       }
     }
   }

@@ -296,7 +296,7 @@ resource "aws_instance" "web-app-instance" {
   iam_instance_profile = aws_iam_instance_profile.web-app-instance-profile.name
 
   disable_api_termination = "false"
-  ebs_optimized           = "false"
+  ebs_optimized           = true
 
   enclave_options {
     enabled = "false"
@@ -314,7 +314,7 @@ resource "aws_instance" "web-app-instance" {
     http_tokens                 = "optional"
   }
 
-  monitoring = "false"
+  monitoring = true
   private_ip = "10.10.10.55"
 
   root_block_device {
@@ -367,7 +367,7 @@ resource "aws_instance" "privileged-instance" {
   associate_public_ip_address = "true"
 
   disable_api_termination = "false"
-  ebs_optimized           = "false"
+  ebs_optimized           = true
 
   enclave_options {
     enabled = "false"
@@ -386,7 +386,7 @@ resource "aws_instance" "privileged-instance" {
     http_tokens                 = "optional"
   }
 
-  monitoring = "false"
+  monitoring = true
   private_ip = "10.10.20.69"
 
   root_block_device {

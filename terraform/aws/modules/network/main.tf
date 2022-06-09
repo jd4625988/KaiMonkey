@@ -44,7 +44,6 @@ resource "aws_subnet" "km_public_subnet" {
   cidr_block              = cidrsubnet(aws_vpc.km_vpc.cidr_block, 8, var.az_count + count.index)
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   vpc_id                  = aws_vpc.km_vpc.id
-  map_public_ip_on_launch = true
 
   tags = merge(var.default_tags, {
     Name = "km_public_subnet_${var.environment}"
@@ -157,6 +156,11 @@ resource "aws_lb" "km_lb" {
   name            = "km-lb-${var.environment}"
   subnets         = aws_subnet.km_public_subnet.*.id
   security_groups = [aws_security_group.km_alb_sg.id]
+  enable_deletion_protection = true
+  drop_invalid_header_fields = true
+  access_logs {
+    enabled = true
+  }
 }
 
 resource "aws_lb_target_group" "km_lb_target" {

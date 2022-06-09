@@ -6,7 +6,7 @@
       "Properties": {
         "SnsTopicName": "",
         "IsLogging": false,
-        "IsMultiRegionTrail": false,
+        "IsMultiRegionTrail": true
         "KMSKeyId": "",
         "EnableLogFileValidation": false
       }

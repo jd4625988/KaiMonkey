@@ -10,7 +10,7 @@
                         "TransitionToIA": "AFTER_30_DAYS"
                     }
                 ],
-                "Encrypted": false,
+                "Encrypted": true
                 "FileSystemTags": [
                     {
                         "Key": "Name",
